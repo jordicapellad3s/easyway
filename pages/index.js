@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import getPrompt from '@/services/getPromp'
 import Head from 'next/head'
