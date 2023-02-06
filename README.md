@@ -1,4 +1,4 @@
-![Thumbnail](/images/thumbnail.png "Easyway")
+![Thumbnail](/images/thumbnail.png)
 
 
 ## Easy itinerary generation
