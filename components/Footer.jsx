@@ -8,7 +8,7 @@ export default function Footer () {
       <div className="px-6 py-12 mx-auto max-w-7xl md:flex md:items-center md:justify-between lg:px-8">
         <div className="mt-8 md:order-1 md:mt-0">
           <p className="text-xs leading-5 text-center text-gray-500">
-            &copy; {year} Jordi Capellades, Inc. All rights reserved.
+            &copy; {year} Jordi Capellades for Midudev Hackathon 👨🏻‍💻.
           </p>
         </div>
       </div>

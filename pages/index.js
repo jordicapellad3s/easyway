@@ -20,23 +20,6 @@ export default function Home () {
     setPrompt(data.generations[0].text)
   }
 
-  const Circle = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1024 1024"
-      className="absolute -top-72 left-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] opacity-30"
-      aria-hidden="true"
-    >
-      <circle cx={512} cy={512} r={512} fill="url(#8d958450-c69f-4251-94bc-4e091a323369)" fillOpacity="0.7" />
-      <defs>
-        <radialGradient id="8d958450-c69f-4251-94bc-4e091a323369">
-          <stop stopColor="#7775D6" />
-          <stop offset={1} stopColor="#E935C1" />
-        </radialGradient>
-      </defs>
-    </svg>
-  )
-
   return (
     <>
       <Head>
@@ -45,7 +28,7 @@ export default function Home () {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-      <main className="">
+      <main className=''>
         <div>
           <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="max-w-2xl mx-auto">
@@ -65,7 +48,7 @@ export default function Home () {
                     value={destination}
                     placeholder="Destination"
                     onChange={(e) => setDestination(e.target.value)}
-                    className="w-full px-4 py-2 text-white bg-[#31302c] placeholder:text-white placeholder:text-opacity-50 border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-offset-2 focus:ring-offset-[#dee998] focus:ring-0 focus:border-0"
+                    className="w-full px-4 py-2 text-white bg-[#31302c] placeholder:text-white placeholder:text-opacity-50 rounded-xl"
                     required
                   />
                   <span className="text-xs text-white text-opacity-50">Write the city of your trip</span>
@@ -74,18 +57,20 @@ export default function Home () {
                     value={days}
                     placeholder="Days"
                     onChange={(e) => setDays(e.target.value)}
-                    className="w-full px-4 py-2 text-white bg-[#31302c] placeholder:text-white placeholder:text-opacity-50 border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-offset-2 focus:ring-offset-[#dee998] focus:ring-0 focus:border-0"
+                    className="w-full px-4 py-2 text-white bg-[#31302c] placeholder:text-white placeholder:text-opacity-50 rounded-xl"
                     min={1}
                     max={10}
                     required
                   />
                   <span className="text-xs text-white text-opacity-50">Max: 10 days</span>
-                  <button
-                    type="submit"
-                    className="flex items-center justify-center w-full px-4 py-2 font-medium text-[#31302c ] bg-[#dee998] border border-transparent rounded-md shadow-sm focus:outline-none focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-0"
-                  >
-                    Generate
-                    {loading && (
+                  {loading ? (
+                    <div
+                      type="submit"
+                      className="flex items-center justify-center w-full px-4 py-2 font-medium text-[#31302c ] bg-[#dee998] rounded-xl"
+                      {...loading && `disabled`}
+                    >
+                      Generating
+
                       <svg
                         className="w-5 h-5 ml-2 -mr-1 text-black animate-spin"
                         xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +91,14 @@ export default function Home () {
                           d="M4 12a8 8 0 018-8v1a7 7 0 00-7 7h1z"
                         />
                       </svg>
-                    )}
-                  </button>
+                    </div>
+                  ) : (
+                    <button
+                      className="flex items-center justify-center w-full px-4 py-2 font-medium text-[#31302c ] bg-[#dee998] rounded-xl"
+                    >
+                      Generate
+                    </button>
+                  )}
                 </div>
               </form>
               {prompt && (
